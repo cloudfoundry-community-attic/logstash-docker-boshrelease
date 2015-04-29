@@ -9,28 +9,14 @@ update:
   serial: false
 
 jobs:
-  - name: logstash_docker_leader_z1
-    templates:
-    - name: logstash-docker
-      release: logstash-docker
-    instances: 0
-    resource_pool: small_z1
-    networks: (( merge ))
-    persistent_disk: 0
-    properties: {}
   - name: logstash_docker_z1
     templates:
     - name: logstash-docker
       release: logstash-docker
-    instances: 0
+    instances: 1
     resource_pool: small_z1
     networks: (( merge ))
-    persistent_disk: 0
-    update:
-      canaries: 10
-    properties:
-      logstash_docker:
-        leader_address: (( merge ))
+    persistent_disk: 10240
 
 networks: (( merge ))
 

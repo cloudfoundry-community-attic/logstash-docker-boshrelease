@@ -12,19 +12,10 @@ update:
   update_watch_time: 1000-30000
 
 jobs:
-  - name: logstash_docker_leader_z1
-    instances: 1
-    networks:
-      - name: logstash_docker1
-        static_ips: (( static_ips(0) ))
   - name: logstash_docker_z1
-    instances: 2
     networks:
       - name: logstash_docker1
         static_ips: ~
-    properties:
-      logstash_docker:
-        leader_address: (( jobs.logstash_docker_leader_z1.networks.logstash_docker1.static_ips.[0] ))
 
 compilation:
   cloud_properties:
