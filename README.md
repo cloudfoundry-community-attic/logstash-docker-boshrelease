@@ -123,7 +123,7 @@ bosh -n deploy
 
 ### Versions & configuration
 
-The version of Logstash/Elastic Search is determined by the Docker image bundled with the release being used. The source for building the Docker image is in the `image/` folder of this repo. See below for instructions.
+The version of Logstash/Elastic Search is determined by the Docker image bundled with the release being used. The source for building the Docker image is in the `images/logstash` folder of this repo. See below for instructions.
 
 The Logstash filters used to parse incoming logs is also determined by the Docker image.
 
@@ -132,9 +132,15 @@ The Logstash filters used to parse incoming logs is also determined by the Docke
 To push new ideas/new logstash filters to an alternate Docker Hub image name:
 
 ```
-cd image
-docker build -t USERNAME/logstash .
+cd images/logstash-dev
+export DOCKER_USER=<your user>
+docker build -t $DOCKER_USER/logstash .
+docker push $DOCKER_USER/logstash
 ```
+
+This will create a new Docker image, based upon the upstream `cfcommunity/logstash`.
+
+You can now try out new logstash configuration in `images/logstash-dev/etc/logstash/logstash.conf` and re-build/push the image quickly.
 
 You can now test them using `upstream` templates.
 

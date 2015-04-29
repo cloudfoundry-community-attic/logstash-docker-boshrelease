@@ -17,7 +17,6 @@ RUN \
 
 ADD etc/supervisor/conf.d/elasticsearch.conf /etc/supervisor/conf.d/elasticsearch.conf
 ADD etc/supervisor/conf.d/logstash.conf /etc/supervisor/conf.d/logstash.conf
-ADD etc/logstash/logstash.conf /etc/logstash/logstash.conf
 
 ADD scripts /scripts
 RUN chmod +x /scripts/*.sh
@@ -30,3 +29,5 @@ EXPOSE 9200
 EXPOSE 9300
 
 VOLUME ["/data"]
+
+ADD etc/logstash/logstash.conf /etc/logstash/logstash.conf
