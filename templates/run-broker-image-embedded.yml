@@ -22,6 +22,7 @@ meta:
 properties:
   nats: (( meta.nats ))
   cfcontainersbroker:
+    fetch_images: false
     auth_username: (( meta.cfcontainersbroker.username ))
     auth_password: (( meta.cfcontainersbroker.password ))
     cookie_secret: (( meta.cfcontainersbroker.cookie_secret ))
