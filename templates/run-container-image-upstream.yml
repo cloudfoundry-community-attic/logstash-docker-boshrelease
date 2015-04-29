@@ -1,0 +1,21 @@
+---
+meta:
+  job_templates:
+    # run docker daemon
+    - {name: docker, release: docker}
+    # do not run cfcommunity_logstash_image template that installs embedded docker image
+    # run containers (see properties.containers)
+    - {name: containers, release: docker}
+
+properties:
+  containers:
+    - name: logstash
+      image: "cfcommunity/logstash"
+      command: ""
+      bind_ports:
+        - 514:514
+        - 9200:9200
+        - 9300:9300
+      bind_volumes:
+        - "/data"
+      memory: "1G"

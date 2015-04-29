@@ -1,7 +1,0 @@
----
-meta:
-  job_templates:
-    # run docker daemon
-    - {name: docker, release: docker}
-    # warm docker image cache from bosh package
-    - {name: cfcommunity_logstash_image, release: logstash-docker}

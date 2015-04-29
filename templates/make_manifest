@@ -1,15 +1,15 @@
 #!/bin/bash
 
 infrastructure=$1; shift
+runner=$1; shift
 docker_image=$1; shift
 set -e
-set -x
 
 template_prefix="logstash-docker"
 STEMCELL_OS=${STEMCELL_OS:-ubuntu}
 
 usage() {
-  echo "usage: ./make_manifest <aws-ec2|warden> <embedded|upstream>"
+  echo "usage: ./make_manifest <aws-ec2|warden> <container|broker> [<embedded|upstream>]"
   exit 1
 }
 
@@ -18,10 +18,11 @@ if [ "$infrastructure" != "aws-ec2" ] && \
   usage
 fi
 
-if [ "$docker_image" != "embedded" ] && \
-    [ "$docker_image" != "upstream" ] ; then
+if [ "$runner" != "container" ] && \
+    [ "$runner" != "broker" ] ; then
   usage
 fi
+docker_image=${docker_image:="embedded"}
 
 BOSH_STATUS=$(bosh status)
 DIRECTOR_UUID=$(echo "$BOSH_STATUS" | grep UUID | awk '{print $2}')
@@ -70,8 +71,8 @@ perl -pi -e "s/STEMCELL/$STEMCELL/g" $tmpdir/stub-with-uuid.yml
 spiff merge \
   $templates/deployment.yml \
   $templates/jobs.yml \
+  $templates/run-${runner}-image-${docker_image}.yml \
   $templates/infrastructure-${infrastructure}.yml \
-  $templates/docker-image-${docker_image}.yml \
   $tmpdir/stub-with-uuid.yml \
   $* > $tmpdir/$NAME-manifest.yml
 
