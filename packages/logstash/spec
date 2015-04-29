@@ -1,0 +1,4 @@
+---
+name: logstash
+dependencies: []
+files: [docker-images/cfcommunity_logstash.tgz]

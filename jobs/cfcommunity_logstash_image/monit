@@ -1,0 +1,5 @@
+check process cfcommunity_logstash_image
+  with pidfile /var/vcap/sys/run/cfcommunity_logstash_image/cfcommunity_logstash_image.pid
+  start program "/var/vcap/jobs/cfcommunity_logstash_image/bin/monit_debugger install_ctl '/var/vcap/jobs/cfcommunity_logstash_image/bin/install_ctl start'"
+  stop program "/var/vcap/jobs/cfcommunity_logstash_image/bin/monit_debugger install_ctl '/var/vcap/jobs/cfcommunity_logstash_image/bin/install_ctl stop'"
+  group vcap
