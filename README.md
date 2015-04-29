@@ -4,9 +4,10 @@ BOSH Release for Logstash/Elastic Search in Docker container
 Usage
 -----
 
-To use BOSH bosh release, first upload it to your BOSH:
+To use this BOSH release, first upload it to your bosh and the `docker` release
 
 ```
+bosh upload release https://bosh.io/d/github.com/cf-platform-eng/docker-boshrelease
 bosh upload release https://bosh.io/u/github.com/cloudfoundry-community/logstash-docker-boshrelease
 ```
 
