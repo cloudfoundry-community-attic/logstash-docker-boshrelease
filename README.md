@@ -3,8 +3,8 @@ BOSH Release for Logstash/Elastic Search in Docker container
 
 This BOSH release has three use cases:
 
--	run a single container of a Logstash/ES Docker image on a BOSH VM
--	run a Cloud Foundry service broker that runs containers of Logstash/ES Docker image on a BOSH VM based on user requests
+-	run a single Docker container of a Logstash/ES Docker image on a single BOSH VM
+-	run a Cloud Foundry service broker that itself runs containers of Logstash/ES Docker image on a BOSH VM based on user requests
 -	embedded Logstash/ES Docker image that could be used by another BOSH release
 
 The Logstash/Elastic Search image can be referenced either:
