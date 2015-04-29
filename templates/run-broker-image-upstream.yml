@@ -1,5 +1,16 @@
 ---
 meta:
+  cfcontainersbroker:
+    cc_api_uri: (( merge ))
+    external_host: (( merge ))
+    username: containers
+    password: containers
+    cookie_secret: 'e7247dae-a252-4393-afa3-2219c1c02efd'
+    protocol: http
+    component_name: logstash-docker-broker
+    max_containers: 20
+  nats: (( merge ))
+
   job_templates:
     # run docker daemon
     - {name: docker, release: docker}
@@ -8,7 +19,16 @@ meta:
     - {name: cf-containers-broker, release: docker}
 
 properties:
+  nats: (( meta.nats ))
   cfcontainersbroker:
+    auth_username: (( meta.cfcontainersbroker.username ))
+    auth_password: (( meta.cfcontainersbroker.password ))
+    cookie_secret: (( meta.cfcontainersbroker.cookie_secret ))
+    cc_api_uri: (( meta.cfcontainersbroker.cc_api_uri ))
+    external_host: (( meta.cfcontainersbroker.external_host ))
+    component_name: (( meta.cfcontainersbroker.component_name ))
+    max_containers: (( meta.cfcontainersbroker.max_containers ))
+
     services:
       - id: 'e72113ed-fde7-45fd-8758-aff41e6c5507'
         name: 'logstash14'
