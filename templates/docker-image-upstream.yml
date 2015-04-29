@@ -1,0 +1,6 @@
+---
+meta:
+  job_templates:
+    # run docker daemon
+    - {name: docker, release: docker}
+    # do not run cfcommunity_logstash_image template that installs embedded docker image

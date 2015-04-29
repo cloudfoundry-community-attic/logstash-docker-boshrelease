@@ -1,5 +1,6 @@
 meta:
   environment: ~
+  job_templates: (( merge ))
 
 update:
   canaries: 1
@@ -10,11 +11,7 @@ update:
 
 jobs:
   - name: logstash_docker_z1
-    templates:
-      # run docker daemon
-      - {name: docker, release: docker}
-      # warm docker image cache from bosh package
-      - {name: cfcommunity_logstash_image, release: logstash-docker}
+    templates: (( meta.job_templates ))
     instances: 1
     resource_pool: small_z1
     networks: (( merge ))
