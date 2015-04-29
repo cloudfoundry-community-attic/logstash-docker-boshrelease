@@ -127,7 +127,35 @@ The version of Logstash/Elastic Search is determined by the Docker image bundled
 
 The Logstash filters used to parse incoming logs is also determined by the Docker image.
 
-### Development
+### Development of logstash configuration
+
+To push new ideas/new logstash filters to an alternate Docker Hub image name:
+
+```
+cd image
+docker build -t USERNAME/logstash .
+```
+
+You can now test them using `upstream` templates.
+
+Create an override YAML file, say `my-docker-image.yml`
+
+```yaml
+---
+meta:
+  logstash_image:
+    image: USERNAME/logstash
+    tag: latest
+```
+
+To deploy this change into BOSH, add the `my-docker-image.yml` file to the end of the `make_manifest` command:
+
+```
+./templates/make_manifest warden container upstream my-docker-image.yml
+bosh deploy
+```
+
+### Development of releases
 
 To recreate the Docker image that hosts Logstash & Elastic Search and push it upstream:
 

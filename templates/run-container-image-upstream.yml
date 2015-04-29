@@ -1,5 +1,8 @@
 ---
 meta:
+  logstash_image:
+    image: cfcommunity/logstash
+    tag: latest
   job_templates:
     # run docker daemon
     - {name: docker, release: docker}
@@ -10,7 +13,8 @@ meta:
 properties:
   containers:
     - name: logstash
-      image: "cfcommunity/logstash"
+      image: (( meta.logstash_image.image ))
+      tag: (( meta.logstash_image.tag ))
       command: ""
       bind_ports:
         - 514:514
