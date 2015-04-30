@@ -96,6 +96,19 @@ templates/make_manifest warden container upstream
 bosh -n deploy
 ```
 
+### Using Cloud Foundry Service Broker
+
+Users can now provision logstash services and bind them to their apps.
+
+```
+cf cs logstash14 free my-logs
+cf bs my-app my-logs
+```
+
+The invisible logstash service will start having all app logs drained to it automatically by Cloud Foundry.
+
+To see the logs, please investigate the [kibana-me-logs CLI plugin](https://github.com/cloudfoundry-community/cf-plugin-kibana-me-logs)
+
 ### Override security groups
 
 For AWS & Openstack, the default deployment assumes there is a `default` security group. If you wish to use a different security group(s) then you can pass in additional configuration when running `make_manifest` above.
