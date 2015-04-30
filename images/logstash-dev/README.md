@@ -3,6 +3,14 @@ Develop your own Elastic Search and Logstash Dockerfile
 
 This folder is for you to iterate and develop on your own Logstash configuration customizations, without having to rebuild the 900Mb `cfcommunity/logstash` image.
 
+It is also published upstream as `cfcommunity/logstash-dev`, and is the image deployed when running:
+
+```
+./templates/make_manifest warden container upstream
+```
+
+It includes Kibana 4 running on port 5601.
+
 Usage
 -----
 
@@ -53,4 +61,22 @@ To run the image and bind to host port 514, 9200, 9300:
 
 ```
 $ docker run -d --name logstash -p 514:514 -p 9200:9200 -p 9300:9300 $DOCKER_USER/logstash
+```
+
+### bosh-lite
+
+If you run `cfcommunity/logsearch-dev` or your own version, then Kibana 4 is included.
+
+If you are running it in bosh-lite then you'll need to map its port `5601` to the host VM:
+
+From the `bosh-lite` project:
+
+```
+vagrant ssh -c 'sudo iptables -t nat -A PREROUTING -p tcp -d $(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) --dport 5601 -j DNAT --to 10.244.8.2:5601'
+```
+
+Or from inside your bosh-lite VM:
+
+```
+sudo iptables -t nat -A PREROUTING -p tcp -d $(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) --dport 5601 -j DNAT --to 10.244.20.6:5601
 ```

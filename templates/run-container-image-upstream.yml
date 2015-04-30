@@ -1,7 +1,7 @@
 ---
 meta:
   logstash_image:
-    image: cfcommunity/logstash
+    image: cfcommunity/logstash-dev
     tag: latest
   job_templates:
     # run docker daemon
@@ -20,6 +20,7 @@ properties:
         - 514:514
         - 9200:9200
         - 9300:9300
+        - 5601:5601
       bind_volumes:
         - "/data"
       memory: "1G"
