@@ -1,5 +1,0 @@
-check process logstash_docker
-  with pidfile /var/vcap/sys/run/logstash_docker/logstash_docker.pid
-  start program "/var/vcap/jobs/logstash_docker/bin/monit_debugger logstash_docker_ctl '/var/vcap/jobs/logstash_docker/bin/logstash_docker_ctl start'"
-  stop program "/var/vcap/jobs/logstash_docker/bin/monit_debugger logstash_docker_ctl '/var/vcap/jobs/logstash_docker/bin/logstash_docker_ctl stop'"
-  group vcap
