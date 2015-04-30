@@ -16,6 +16,8 @@ Usage
 
 ### Build the image
 
+To build & use Docker images you will need an account with Docker https://hub.docker.com/account/signup/. Your account name replaces `<you>` below.
+
 To create the image `USERNAME/logstash`, execute the following command in this `image` folder:
 
 ```
@@ -49,25 +51,23 @@ drnic/logstash               latest              1011dcd592a7        2 minutes a
 cfcommunity/logstash         latest              589dac296411        15 minutes ago      885.9 MB
 ```
 
-To push the image to your Docker Hub registry account:
+Push the image to your Docker Hub registry account:
 
 ```
 $ docker push $DOCKER_USER/logstash
 ```
 
-### Run the image
+### Run the image locally
 
-To run the image and bind to host port 514, 9200, 9300:
+To run the image and bind to host port 514 (syslog), 9200, 9300, 5601 (kibana4):
 
 ```
-$ docker run -d --name logstash -p 514:514 -p 9200:9200 -p 9300:9300 $DOCKER_USER/logstash
+$ docker run -d --name logstash -p 514:514 -p 9200:9200 -p 9300:9300 -p 5601:5601 $DOCKER_USER/logstash
 ```
 
-### bosh-lite
+### Setup bosh-lite
 
-If you run `cfcommunity/logsearch-dev` or your own version, then Kibana 4 is included.
-
-If you are running it in bosh-lite then you'll need to map its port `5601` to the host VM:
+The the `logstash-dev` `Dockerfile` includes Kibana 4 which runs on port 5601. To access this thru bosh-lite involves adding a port route to the host VM.
 
 From the `bosh-lite` project:
 
@@ -79,4 +79,35 @@ Or from inside your bosh-lite VM:
 
 ```
 sudo iptables -t nat -A PREROUTING -p tcp -d $(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) --dport 5601 -j DNAT --to 10.244.20.6:5601
+```
+
+### Run your custom Docker image in a BOSH VM on bosh-lite
+
+Create an override YAML file, say `my-docker-image.yml`
+
+```yaml
+---
+meta:
+  logstash_image:
+    image: <you>/logstash
+    tag: latest
+```
+
+From the root of this project:
+
+```
+./templates/make_manifest warden container upstream my-docker-image.yml
+bosh -n deploy
+```
+
+You can now view Kibana4 at port 5601 on the host VM (same IP as `bosh target`).
+
+If you make any changes to your `etc/logstash/logstash.conf` and want to redeploy it:
+
+```
+export DOCKER_USER=<you>
+docker build -t $DOCKER_USER/logstash .
+docker push $DOCKER_USER/logstash
+bosh -n delete deployment logstash-docker-warden
+bosh -n deploy
 ```
