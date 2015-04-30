@@ -61,6 +61,18 @@ templates/make_manifest warden container upstream
 bosh -n deploy
 ```
 
+To register your Logstash with a Cloud Foundry application on bosh-lite/warden:
+
+```
+cf cups logstash -l syslog://10.244.20.6:514
+```
+
+Now bind it to your applications and their STDOUT/STDERR logs will automatically stream to your Logstash.
+
+```
+cf bs my-app logstash
+```
+
 ### Run a Cloud Foundry service broker for Logstash/ES
 
 For [bosh-lite](https://github.com/cloudfoundry/bosh-lite), you can quickly create a deployment manifest & deploy a single VM that also includes a service broker for Cloud Foundry
