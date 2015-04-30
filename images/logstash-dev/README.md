@@ -72,7 +72,7 @@ The the `logstash-dev` `Dockerfile` includes Kibana 4 which runs on port 5601. T
 From the `bosh-lite` project:
 
 ```
-vagrant ssh -c 'sudo iptables -t nat -A PREROUTING -p tcp -d $(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) --dport 5601 -j DNAT --to 10.244.8.2:5601'
+vagrant ssh -c 'sudo iptables -t nat -A PREROUTING -p tcp -d $(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) --dport 5601 -j DNAT --to 10.244.20.6:5601'
 ```
 
 Or from inside your bosh-lite VM:
