@@ -102,7 +102,9 @@ bosh -n deploy
 
 You can now view Kibana4 at port 5601 on the host VM (same IP as `bosh target`).
 
-If you make any changes to your `etc/logstash/logstash.conf` and want to redeploy it:
+If you make any changes to your `images/logstash-dev/etc/logstash/logstash.conf` and want to redeploy it.
+
+From the `images/logstash-dev` folder:
 
 ```
 export DOCKER_USER=<you>
@@ -111,3 +113,10 @@ docker push $DOCKER_USER/logstash
 bosh -n delete deployment logstash-docker-warden
 bosh -n deploy
 ```
+
+Pull requests
+-------------
+
+If you want to submit a pull request to `cfcommunity/logstash` image, please copy your `images/logstash-dev/etc/logstash/logstash.conf` changes into `images/logstash/etc/logstash/logstash.conf`.
+
+Submit the PR for simulteaneous changes to both `images/logstash` and `images/logstash-dev` to keep them in sync.
