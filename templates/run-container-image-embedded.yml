@@ -1,5 +1,8 @@
 ---
 meta:
+  release_versions:
+    docker: (( merge ))
+    logstash_docker: (( merge ))
   job_templates:
     # run docker daemon
     - {name: docker, release: docker}
@@ -7,6 +10,12 @@ meta:
     - {name: cfcommunity_logstash_image, release: logstash-docker}
     # run containers (see properties.containers)
     - {name: containers, release: docker}
+
+releases:
+- name: docker
+  version: (( meta.release_versions.docker ))
+- name: logstash-docker
+  version: (( meta.release_versions.logstash_docker ))
 
 properties:
   containers:

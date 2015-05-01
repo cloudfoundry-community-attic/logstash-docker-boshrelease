@@ -1,5 +1,5 @@
 meta:
-  environment: logstash-docker-warden
+  subnets: (( merge ))
   cfcontainersbroker:
     cc_api_uri: "https://api.10.244.0.34.xip.io"
     external_host: "cf-containers-broker.10.244.0.34.xip.io"
@@ -37,70 +37,5 @@ resource_pools:
 
 networks:
 - name: logstash_docker1
-  # Assumes up to 5 VMs, including 1 static and 4 dynamic.
-  # Plus 5 (double the size) unused IPs, due to BOSH bug/quirk.
-  subnets:
-  - cloud_properties:
-      name: random
-    range: 10.244.20.0/30
-    reserved:
-    - 10.244.20.1
-    static:
-    - 10.244.20.2
-
-  - cloud_properties:
-      name: random
-    range: 10.244.20.4/30
-    reserved:
-    - 10.244.20.5
-    static: []
-  - cloud_properties:
-      name: random
-    range: 10.244.20.8/30
-    reserved:
-    - 10.244.20.9
-    static: []
-  - cloud_properties:
-      name: random
-    range: 10.244.20.12/30
-    reserved:
-    - 10.244.20.13
-    static: []
-  - cloud_properties:
-      name: random
-    range: 10.244.20.16/30
-    reserved:
-    - 10.244.20.17
-    static: []
-
-  # Bonus double-sized network required due to BOSH oddity
-  - cloud_properties:
-      name: random
-    range: 10.244.20.20/30
-    reserved:
-    - 10.244.20.21
-    static: []
-  - cloud_properties:
-      name: random
-    range: 10.244.20.24/30
-    reserved:
-    - 10.244.20.25
-    static: []
-  - cloud_properties:
-      name: random
-    range: 10.244.20.28/30
-    reserved:
-    - 10.244.20.29
-    static: []
-  - cloud_properties:
-      name: random
-    range: 10.244.20.32/30
-    reserved:
-    - 10.244.20.33
-    static: []
-  - cloud_properties:
-      name: random
-    range: 10.244.20.36/30
-    reserved:
-    - 10.244.20.37
-    static: []
+  type: manual
+  subnets: (( meta.subnets ))

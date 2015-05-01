@@ -1,5 +1,4 @@
 meta:
-  environment: ~
   job_templates: (( merge ))
 
 update:
