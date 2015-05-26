@@ -47,11 +47,11 @@ This deployment will look like:
 
 ```
 $ bosh vms logstash-docker-warden
-+----------------------+---------+---------------+-------------+
-| Job/index            | State   | Resource Pool | IPs         |
-+----------------------+---------+---------------+-------------+
-| logstash_docker_z1/0 | running | small_z1      | 10.244.20.6 |
-+----------------------+---------+---------------+-------------+
++----------------------+---------+---------------+--------------+
+| Job/index            | State   | Resource Pool | IPs          |
++----------------------+---------+---------------+--------------+
+| logstash_docker_z1/0 | running | small_z1      | 10.244.18.10 |
++----------------------+---------+---------------+--------------+
 ```
 
 If you want to use the upstream version of the Docker image, reconfigure the deployment manifest:
@@ -64,7 +64,7 @@ bosh -n deploy
 To register your Logstash with a Cloud Foundry application on bosh-lite/warden:
 
 ```
-cf cups logstash -l syslog://10.244.20.6:514
+cf cups logstash -l syslog://10.244.18.10:514
 ```
 
 Now bind it to your applications and their STDOUT/STDERR logs will automatically stream to your Logstash.
@@ -86,17 +86,17 @@ This deployment will also look like:
 
 ```
 $ bosh vms logstash-docker-warden
-+----------------------+---------+---------------+-------------+
-| Job/index            | State   | Resource Pool | IPs         |
-+----------------------+---------+---------------+-------------+
-| logstash_docker_z1/0 | running | small_z1      | 10.244.20.6 |
-+----------------------+---------+---------------+-------------+
++----------------------+---------+---------------+--------------+
+| Job/index            | State   | Resource Pool | IPs          |
++----------------------+---------+---------------+--------------+
+| logstash_docker_z1/0 | running | small_z1      | 10.244.18.10 |
++----------------------+---------+---------------+--------------+
 ```
 
 As a Cloud Foundry admin, you can register the broker and the service it provides:
 
 ```
-cf create-service-broker logstash-docker containers containers http://10.244.20.6
+cf create-service-broker logstash-docker containers containers http://10.244.18.10
 cf enable-service-access logstash14
 cf marketplace
 ```
