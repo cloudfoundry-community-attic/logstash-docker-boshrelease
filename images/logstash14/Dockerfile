@@ -6,8 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN \
 # Elasticsearch
     apt-key adv --keyserver pool.sks-keyservers.net --recv-keys 46095ACC8548582C1A2699A9D27D666CD88E42B4 && \
-    if ! grep "elasticsearch" /etc/apt/sources.list; then echo "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main" >> /etc/apt/sources.list;fi && \
-    if ! grep "logstash" /etc/apt/sources.list; then echo "deb http://packages.elasticsearch.org/logstash/1.4/debian stable main" >> /etc/apt/sources.list;fi && \
+    if ! grep "elasticsearch" /etc/apt/sources.list; then echo "deb http://packages.elastic.co/elasticsearch/1.4/debian stable main" >> /etc/apt/sources.list;fi && \
+    if ! grep "logstash" /etc/apt/sources.list; then echo "deb http://packages.elastic.co/logstash/1.4/debian stable main" >> /etc/apt/sources.list;fi && \
     apt-get update && \
     apt-get install -y supervisor curl && \
     apt-get install -y elasticsearch && \
