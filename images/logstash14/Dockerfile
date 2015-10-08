@@ -1,4 +1,4 @@
-FROM dockerfile/java
+FROM frodenas/java7
 MAINTAINER Long Nguyen & Dr Nic Williams
 
 ENV DEBIAN_FRONTEND noninteractive
