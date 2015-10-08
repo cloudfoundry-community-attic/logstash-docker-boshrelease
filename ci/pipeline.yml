@@ -10,22 +10,22 @@ jobs:
   - put: docker-image-logstash14
     params:
       build: boshrelease/images/logstash14
-- name: image-logstash17
+- name: image-logstash15
   public: true
   serial: true
   plan:
   - aggregate:
     - {get: boshrelease}
-    - {get: boshrelease-image-logstash17, trigger: true}
-  - put: docker-image-logstash17
+    - {get: boshrelease-image-logstash15, trigger: true}
+  - put: docker-image-logstash15
     params:
-      build: boshrelease/images/logstash17
+      build: boshrelease/images/logstash15
 - name: blobs
   public: true
   plan:
   - aggregate:
     - {get: docker-image-logstash14, passed: [image-logstash14]}
-    - {get: docker-image-logstash17, passed: [image-logstash17]}
+    - {get: docker-image-logstash15, passed: [image-logstash15]}
     - {get: boshrelease}
   - task: update-blobs
     file: boshrelease/ci/tasks/update-blobs.yml
@@ -55,13 +55,13 @@ resources:
     private_key: {{github-key}}
     paths: [images/logstash14/*]
 
-- name: boshrelease-image-logstash17
+- name: boshrelease-image-logstash15
   type: git
   source:
     uri: git@github.com:cloudfoundry-community/logstash-docker-boshrelease.git
     branch: {{pipeline-branch}}
     private_key: {{github-key}}
-    paths: [images/logstash17/*]
+    paths: [images/logstash15/*]
 
 - name: docker-image-logstash14
   type: docker-image
@@ -72,11 +72,11 @@ resources:
     repository: cfcommunity/logstash
     tag: "1.4"
 
-- name: docker-image-logstash17
+- name: docker-image-logstash15
   type: docker-image
   source:
     email: {{docker-hub-email}}
     username: {{docker-hub-username}}
     password: {{docker-hub-password}}
     repository: cfcommunity/logstash
-    tag: "1.7"
+    tag: "1.5"
