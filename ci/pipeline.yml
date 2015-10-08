@@ -1,0 +1,82 @@
+---
+jobs:
+- name: image-logstash14
+  public: true
+  serial: true
+  plan:
+  - aggregate:
+    - {get: boshrelease}
+    - {get: boshrelease-image-logstash14, trigger: true}
+  - put: docker-image-logstash14
+    params:
+      build: boshrelease/images/logstash14
+- name: image-logstash17
+  public: true
+  serial: true
+  plan:
+  - aggregate:
+    - {get: boshrelease}
+    - {get: boshrelease-image-logstash17, trigger: true}
+  - put: docker-image-logstash17
+    params:
+      build: boshrelease/images/logstash17
+- name: blobs
+  public: true
+  plan:
+  - aggregate:
+    - {get: docker-image-logstash14, passed: [image-logstash14]}
+    - {get: docker-image-logstash17, passed: [image-logstash17]}
+    - {get: boshrelease}
+  - task: update-blobs
+    file: boshrelease/ci/tasks/update-blobs.yml
+    config:
+      params:
+        aws_access_key_id: {{blobstore-aws-accesss}}
+        aws_secret_access_key: {{blobstore-aws-secret}}
+  - put: boshrelease
+    params:
+      repository: update-blobs/boshrelease
+      rebase: true
+
+
+resources:
+- name: boshrelease
+  type: git
+  source:
+    uri: git@github.com:cloudfoundry-community/logstash-docker-boshrelease.git
+    branch: {{pipeline-branch}}
+    private_key: {{github-key}}
+
+- name: boshrelease-image-logstash14
+  type: git
+  source:
+    uri: git@github.com:cloudfoundry-community/logstash-docker-boshrelease.git
+    branch: {{pipeline-branch}}
+    private_key: {{github-key}}
+    paths: [images/logstash14/*]
+
+- name: boshrelease-image-logstash17
+  type: git
+  source:
+    uri: git@github.com:cloudfoundry-community/logstash-docker-boshrelease.git
+    branch: {{pipeline-branch}}
+    private_key: {{github-key}}
+    paths: [images/logstash17/*]
+
+- name: docker-image-logstash14
+  type: docker-image
+  source:
+    email: {{docker-hub-email}}
+    username: {{docker-hub-username}}
+    password: {{docker-hub-password}}
+    repository: cfcommunity/logstash
+    tag: "1.4"
+
+- name: docker-image-logstash17
+  type: docker-image
+  source:
+    email: {{docker-hub-email}}
+    username: {{docker-hub-username}}
+    password: {{docker-hub-password}}
+    repository: cfcommunity/logstash
+    tag: "1.7"
