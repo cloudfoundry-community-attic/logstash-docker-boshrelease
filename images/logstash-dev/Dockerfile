@@ -1,4 +1,4 @@
-FROM cfcommunity/logstash
+FROM cfcommunity/logstash:1.4
 MAINTAINER You
 
 # Kibana
