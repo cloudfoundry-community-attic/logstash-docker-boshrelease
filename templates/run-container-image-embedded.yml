@@ -1,5 +1,8 @@
 ---
 meta:
+  logstash_image:
+    image: cfcommunity/logstash-dev
+    tag: "1.5"
   release_versions:
     docker: (( merge ))
     logstash_docker: (( merge ))
@@ -20,7 +23,8 @@ releases:
 properties:
   containers:
     - name: logstash
-      image: "cfcommunity/logstash"
+      image: (( meta.logstash_image.image ))
+      tag: (( meta.logstash_image.tag ))
       command: ""
       bind_ports:
         - "514:514"

@@ -2,7 +2,7 @@
 meta:
   logstash_image:
     image: cfcommunity/logstash-dev
-    tag: latest
+    tag: "1.5"
 
   release_versions:
     docker: (( merge ))
