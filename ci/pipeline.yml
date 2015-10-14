@@ -10,6 +10,16 @@ jobs:
   - put: docker-image-logstash14
     params:
       build: boshrelease/images/logstash14
+  - get: docker-image
+    resource: docker-image-logstash14
+  - task: bump-image-blob
+    file: boshrelease/ci/tasks/bump-image-blob.yml
+    config:
+      params:
+        aws_access_key_id: {{blobstore-aws-accesss}}
+        aws_secret_access_key: {{blobstore-aws-secret}}
+  - put: boshrelease
+    params: {repository: update-blobs/boshrelease, rebase: true}
 - name: image-logstash15
   public: true
   serial: true
@@ -20,23 +30,16 @@ jobs:
   - put: docker-image-logstash15
     params:
       build: boshrelease/images/logstash15
-- name: blobs
-  public: true
-  plan:
-  - aggregate:
-    - {get: docker-image-logstash14, passed: [image-logstash14]}
-    - {get: docker-image-logstash15, passed: [image-logstash15]}
-    - {get: boshrelease}
-  - task: update-blobs
-    file: boshrelease/ci/tasks/update-blobs.yml
+  - get: docker-image
+    resource: docker-image-logstash15
+  - task: bump-image-blob
+    file: boshrelease/ci/tasks/bump-image-blob.yml
     config:
       params:
         aws_access_key_id: {{blobstore-aws-accesss}}
         aws_secret_access_key: {{blobstore-aws-secret}}
   - put: boshrelease
-    params:
-      repository: update-blobs/boshrelease
-      rebase: true
+    params: {repository: update-blobs/boshrelease, rebase: true}
 
 
 resources:
