@@ -1,0 +1,20 @@
+---
+packages:
+- name: logstash
+  version: bd5b546af54bade22600fd86993dae2dc119131c
+  fingerprint: bd5b546af54bade22600fd86993dae2dc119131c
+  sha1: c6f9dd60aaa9db7181faef998fcef54e9dcbb5ab
+  dependencies: []
+jobs:
+- name: cfcommunity_logstash_image
+  version: 6400d889126d998c9540b05e5801555525a39bb3
+  fingerprint: 6400d889126d998c9540b05e5801555525a39bb3
+  sha1: 8eca14dc888878985f66dc231a7b26202b70ea20
+license:
+  version: 8da6eb3df1dce64b78610e7cbaf4245d66e88f1c
+  fingerprint: 8da6eb3df1dce64b78610e7cbaf4245d66e88f1c
+  sha1: b8c29d9003ff32aa60bb59e776ab48f402b02858
+commit_hash: f3233c98
+uncommitted_changes: true
+name: logstash-docker
+version: '1.2'
