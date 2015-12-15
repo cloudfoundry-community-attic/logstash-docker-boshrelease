@@ -25,6 +25,8 @@ ADD etc/kibana/config.js /opt/logstash/vendor/kibana/config.js
 ADD scripts /scripts
 RUN chmod +x /scripts/*.sh
 
+RUN /usr/share/elasticsearch/bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.4.2
+
 ENTRYPOINT ["/scripts/run.sh"]
 CMD [""]
 
