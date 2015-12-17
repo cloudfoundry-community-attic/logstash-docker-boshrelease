@@ -23,6 +23,7 @@ imagename=$(cat ${image}/repository | sed "s/\//\-/")
 tag=$(cat ${image}/tag)
 cat ${image}/digest
 cat ${image}/tag
+rm boshrelease/blobs/docker-images/${imagename}-${tag}.tgz
 cp ${image}/image boshrelease/blobs/docker-images/${imagename}-${tag}.tgz
 
 cd boshrelease
