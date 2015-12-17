@@ -13,17 +13,14 @@ blobstore:
     secret_access_key: ${aws_secret_access_key}
 EOF
 
-cd boshrelease
-bosh -n sync blobs
-cd -
+#cd boshrelease
+#bosh -n sync blobs
+#cd -
 
 mkdir -p boshrelease/blobs/docker-images
 set -x
 imagename=$(cat ${image}/repository | sed "s/\//\-/")
 tag=$(cat ${image}/tag)
-cat ${image}/digest
-cat ${image}/tag
-rm boshrelease/blobs/docker-images/${imagename}-${tag}.tgz
 cp ${image}/image boshrelease/blobs/docker-images/${imagename}-${tag}.tgz
 
 cd boshrelease
