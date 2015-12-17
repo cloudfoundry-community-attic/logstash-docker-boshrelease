@@ -18,9 +18,11 @@ bosh -n sync blobs
 cd -
 
 mkdir -p boshrelease/blobs/docker-images
-
+set -x
 imagename=$(cat ${image}/repository | sed "s/\//\-/")
 tag=$(cat ${image}/tag)
+cat ${image}/digest
+cat ${image}/tag
 cp ${image}/image boshrelease/blobs/docker-images/${imagename}-${tag}.tgz
 
 cd boshrelease
