@@ -1,13 +1,11 @@
 ---
 docker-images/cfcommunity-logstash-1.4.tgz:
-  object_id: d05c0232-e8a7-41b1-9e69-fe4b40750e54
-  sha: !binary |-
-    YTM2ZTA5MjBjMDcyZDQ4MTVhYzJhZTc2Mjc0YWYzMzJjMWFlYzM0NA==
-  size: 679741440
+  object_id: 3c2dfcb3-57df-4586-b708-bb9f8a2d6d0c
+  sha: a688d6578b441b5f337942637ad8e0e42b7a3617
+  size: 704853504
 docker-images/cfcommunity-logstash-1.5.tgz:
   object_id: 0b4096a8-2adb-40da-aca6-751c94f214fc
-  sha: !binary |-
-    ZWI2NmNiNzNhYjYwMTBmMzVhZWY0YWJjNDljNzIxODc4NmI3MjZlNw==
+  sha: eb66cb73ab6010f35aef4abc49c7218786b726e7
   size: 721131520
 docker-images/cfcommunity_logstash_1_4.tgz:
   object_id: d6ecf000-bf25-45ba-a41f-018199bb12d4
