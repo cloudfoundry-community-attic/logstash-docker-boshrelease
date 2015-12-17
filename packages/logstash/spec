@@ -2,4 +2,4 @@
 name: logstash
 dependencies: []
 files:
-- docker-images/cfcommunity_logstash_*.tgz
+- docker-images/cfcommunity-logstash-*.tgz
