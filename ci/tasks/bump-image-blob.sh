@@ -19,9 +19,9 @@ cd -
 
 mkdir -p boshrelease/blobs/docker-images
 
-imagename=$(cat docker-image/repository | sed "s/\//\-/")
-tag=$(cat docker-image/tag)
-cp docker-image/image boshrelease/blobs/docker-images/${imagename}-${tag}.tgz
+imagename=$(cat ${image}/repository | sed "s/\//\-/")
+tag=$(cat ${image}/tag)
+cp ${image}/image boshrelease/blobs/docker-images/${imagename}-${tag}.tgz
 
 cd boshrelease
 bosh -n upload blobs
