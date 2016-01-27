@@ -1,0 +1,4 @@
+- image: cfcommunity/logstash
+  tag: "1.4"
+- image: cfcommunity/logstash
+  tag: "1.5"

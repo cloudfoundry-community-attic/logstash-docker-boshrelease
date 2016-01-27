@@ -1,6 +1,8 @@
 ---
 name: cfcommunity_logstash_image
-packages: [logstash]
+packages:
+- cfcommunity_logstash_1_4_image
+- cfcommunity_logstash_1_5_image
 templates:
   bin/monit_debugger: bin/monit_debugger
   bin/install_ctl: bin/install_ctl

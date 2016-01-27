@@ -30,13 +30,14 @@ releases:
 
 properties:
   nats: (( meta.nats ))
-  cfcontainersbroker:
+  cf:
+    api_url: (( meta.cfcontainersbroker.cc_api_uri ))
+  broker:
     fetch_images: false
-    auth_username: (( meta.cfcontainersbroker.username ))
-    auth_password: (( meta.cfcontainersbroker.password ))
+    username: (( meta.cfcontainersbroker.username ))
+    password: (( meta.cfcontainersbroker.password ))
     cookie_secret: (( meta.cfcontainersbroker.cookie_secret ))
-    cc_api_uri: (( meta.cfcontainersbroker.cc_api_uri ))
-    external_host: (( meta.cfcontainersbroker.external_host ))
+    host: (( meta.cfcontainersbroker.external_host ))
     component_name: (( meta.cfcontainersbroker.component_name ))
     max_containers: (( meta.cfcontainersbroker.max_containers ))
 

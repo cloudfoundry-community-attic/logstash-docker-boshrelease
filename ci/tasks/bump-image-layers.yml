@@ -1,0 +1,17 @@
+---
+platform: linux
+image: docker:///starkandwayne/concourse
+
+inputs:
+- name: boshrelease
+- name: docker-image-logstash14
+  path: boshrelease/tmpimages/cfcommunity_logstash_1_4_image
+- name: docker-image-logstash15
+  path: boshrelease/tmpimages/cfcommunity_logstash_1_5_image
+
+params:
+  aws_access_key_id:
+  aws_secret_access_key:
+
+run:
+  path: boshrelease/ci/tasks/bump-image-layers.sh

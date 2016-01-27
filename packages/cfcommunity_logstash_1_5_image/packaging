@@ -1,0 +1,6 @@
+set -e; set -u
+cp cfcommunity_logstash_1_5_image/* $BOSH_INSTALL_TARGET
+cd docker_layers
+for layer in *.tgz; do tar -xf "$layer"; rm "$layer"; done
+tar -zcf image.tgz ./*
+cp -a image.tgz $BOSH_INSTALL_TARGET

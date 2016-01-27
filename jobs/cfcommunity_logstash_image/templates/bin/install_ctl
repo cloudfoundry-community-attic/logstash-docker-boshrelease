@@ -17,13 +17,18 @@ case $1 in
     # store pid in $PIDFILE
     echo $$ > $PIDFILE
 
-    for image in /var/vcap/packages/logstash/*.tgz; do
+    for image in /var/vcap/packages/*_image/*.tgz; do
       echo "Loading docker image $image" >>$LOG_DIR/$JOB_NAME.stdout.log
         time docker \
            --host unix:///var/vcap/sys/run/docker/docker.sock \
            load -i $image \
              >>$LOG_DIR/$JOB_NAME.stdout.log \
              2>>$LOG_DIR/$JOB_NAME.stderr.log
+    done
+    for image in /var/vcap/packages/*_image; do
+        time /var/vcap/packages/docker/bin/docker \
+           --host unix:///var/vcap/sys/run/docker/docker.sock \
+           tag $(cat ${image}/image-id) $(cat ${image}/repository):$(cat ${image}/tag)
     done
 
     # do nothing forever

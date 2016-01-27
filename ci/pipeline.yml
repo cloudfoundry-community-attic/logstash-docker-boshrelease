@@ -18,55 +18,21 @@ jobs:
     params:
       build: boshrelease-image-logstash15/images/logstash15
 
-- name: image-logstash14
-  public: true
-  serial: true
-  plan:
-  - aggregate:
-    - get: boshrelease
-    - get: boshrelease-image-logstash14
-      trigger: true
-    - get: docker-image-logstash14
-      passed: [resource-image-logstash14]
-  - task: bump-image-blob
-    config:
-      platform: linux
-      image: docker:///concourse/concourse-ci
-      inputs:
-      - name: boshrelease
-      - name: docker-image-logstash14
-      run:
-        path: boshrelease/ci/tasks/bump-image-blob.sh
-      params:
-        aws_access_key_id: {{blobstore-aws-accesss}}
-        aws_secret_access_key: {{blobstore-aws-secret}}
-        image: docker-image-logstash14
-  - put: boshrelease
-    params: {repository: bump-image-blob/boshrelease, rebase: true}
 
-- name: image-logstash15
+- name: bump-layers
   public: true
-  serial: true
+  serial_groups: [boshrelease]
   plan:
   - aggregate:
-    - get: boshrelease
-    - get: boshrelease-image-logstash14
-      trigger: true
-    - get: docker-image-logstash15
-      passed: [resource-image-logstash15]
+    - {get: docker-image-logstash14, passed: [resource-image-logstash14], trigger: true}
+    - {get: docker-image-logstash15, passed: [resource-image-logstash15], trigger: true}
+    - {get: boshrelease}
   - task: bump-image-blob
+    file: boshrelease/ci/tasks/bump-image-layers.yml
     config:
-      platform: linux
-      image: docker:///concourse/concourse-ci
-      inputs:
-      - name: boshrelease
-      - name: docker-image-logstash15
-      run:
-        path: boshrelease/ci/tasks/bump-image-blob.sh
       params:
         aws_access_key_id: {{blobstore-aws-accesss}}
         aws_secret_access_key: {{blobstore-aws-secret}}
-        image: docker-image-logstash15
   - put: boshrelease
     params: {repository: bump-image-blob/boshrelease, rebase: true}
 
