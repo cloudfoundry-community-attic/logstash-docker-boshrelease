@@ -64,8 +64,8 @@ docker_layers/7f2bee10c5081cdda3be9af043d67010813f2f44930017329362de5e55090e00.t
   sha: 1a656f0cf23cd718e531a25f1010bfeff755e033
   size: 829
 cfcommunity_logstash_1_4_image/image-id:
-  object_id: 9df110d1-94dd-496b-8d6c-40e89abf491c
-  sha: 2d26686f0fe78a1ef00231c3ae001061aa117469
+  object_id: 9327ef40-bc0d-448e-87cd-f519ec3b2721
+  sha: 6c4582bf9aebc041a35d1722a85e65ca8d3bf007
   size: 65
 cfcommunity_logstash_1_4_image/repository:
   object_id: 9df710c8-43a6-43d4-a61f-7242542cbd3d
@@ -76,8 +76,8 @@ cfcommunity_logstash_1_4_image/tag:
   sha: 2e1d6e852c9d321bb37cb601ab2a6d97e323153e
   size: 4
 cfcommunity_logstash_1_5_image/image-id:
-  object_id: 9999cf92-c264-42b7-a5a9-2d46d59fb8d0
-  sha: 88dfe43e39322797930b1b251d5f84fbef021b1c
+  object_id: e3eda9cf-bb29-42c7-92d5-2e1a99993d7e
+  sha: 14a7a625d2a4e5fbd0028d7b089c08d4ff5e264a
   size: 65
 cfcommunity_logstash_1_5_image/repository:
   object_id: f451eb64-b3e3-4f07-913b-7444cc42b0bc
@@ -87,78 +87,6 @@ cfcommunity_logstash_1_5_image/tag:
   object_id: 76c1305d-489e-41e8-a713-667c16a8d8d8
   sha: b083c2ce12d47834556b6c3259317763aff8ffa8
   size: 4
-docker_layers/8b0c1bef40496e50bcf53796a1de4b7095b62857fc3943b4d9641cedecb604fd.tgz:
-  object_id: 44d51ef0-7cbf-408d-82ea-6cd3b8d2e664
-  sha: e8cb7082fdd6c96a23cd2bea2803c4b2af53663f
-  size: 1103
-docker_layers/eb9cd61d5cd5a9d3eeb3f70406c2ad7a0e8f33e60eb498addfdde7b7aa6778c6.tgz:
-  object_id: cf5c0690-f333-45d0-afda-f37422368dff
-  sha: 00dfcd04a3379f0cd14e68ba2d8d1f1d3acd8de5
-  size: 5352166
-docker_layers/8772fc7e158dc63034e28aba9e5d424517114aeb05f0490e86c3cc46ded2bcb8.tgz:
-  object_id: ab60e557-3a6e-4326-b719-7e3db5d7e55e
-  sha: 601aa5c086bfa5b0f9265a605814ffb4b1badd57
-  size: 896
-docker_layers/eb628eef08593b38f66d4ffb1f6d2e79d3d83902c13dbc5f6dfa94bff5a86013.tgz:
-  object_id: c2ea65b3-8163-478f-a8ee-802d41d15559
-  sha: c5feeed0158060a01a6cea956acb3bcf8af60d8a
-  size: 886
-docker_layers/36dfc1c1846ff68f2e8a625de77d6a857ca9885c48cfbe0e642dd47f6972d2a2.tgz:
-  object_id: 5da03d55-f436-4ce7-ad96-8b179ca157da
-  sha: d1a495368351df6d88c580f9595229b97a89b9ab
-  size: 886
-docker_layers/de8f21ab3e307fbb30f2fe6037bc3205f9860ef5ae45557ebe62a8adca5b42b6.tgz:
-  object_id: 77931c80-8c26-4bbe-b197-55bb25f71ed5
-  sha: 0f48ae1b5099cf9c793de0f69a3c067cb2398f24
-  size: 1077
-docker_layers/25195e71450b2668d61e46ea34288d454c3a7ae905f4debb418fab8e909c82b0.tgz:
-  object_id: 3667ddab-3ff4-43d5-8d65-fc52ff84876c
-  sha: d29543b3fedd62b2b75cc6ca0907031513169f56
-  size: 131860450
-docker_layers/0b2ef54287f3f78172497030220bb8e0599ae072dd996edd1cb4937280d571be.tgz:
-  object_id: 27d233d9-14a2-41e5-8f8b-1826d05a011e
-  sha: c6ed25f57fb0f97ba6cb4718288feec77fd34078
-  size: 1449
-docker_layers/69662a8d7ace93dfcaae058feecc0861b510fbf551b5bec13075fc55f8a971db.tgz:
-  object_id: 67b4a45c-0884-40de-8910-9b7f45391999
-  sha: 03c13a9a03205c099a280309865defe3e46e0ec4
-  size: 1315
-docker_layers/4d0a4ded724e8440c6d5b5485d42bdcba613181dca3cc5896a8f1a2150166a57.tgz:
-  object_id: 6b9ca3a3-3444-43c4-9cef-2c2b823ae6e5
-  sha: 6b8b6062df2e77f99a1f6e864870324205d7d2d6
-  size: 785
-docker_layers/346a77f39a30c66324d9600463a0fdb70c431799c936545f5ef86c3e74fc6230.tgz:
-  object_id: 6fff178b-a463-432e-bcbd-8b8e7bfb821e
-  sha: f51742655ab6e08594d730151c6110433db57b31
-  size: 1112
-docker_layers/49b01d49a83af29d63414fed2997c2a7046ad54af9abf15727b601a97ddcde98.tgz:
-  object_id: 3799c724-8c25-48b6-abc0-1bd307941150
-  sha: 2dd50c0a0ef8a570424d7aca80bef1f7ae1644a6
-  size: 889
-docker_layers/ac451db0125abb2798318887851c19ac5917099f1b151a1137180afb6527c37d.tgz:
-  object_id: e41db9e4-2fce-4f36-ae85-9dc002e2c797
-  sha: b3d7c1e5b29f875a5b360a368702a7c03c089ad2
-  size: 854
-docker_layers/7be4753216e951372a66fdaa0e2f68e6c81e9b6862711f3e30886a57a8197172.tgz:
-  object_id: 997d026c-fa76-40ee-8dd3-dabc07283c77
-  sha: 1582d702f0cf7a9df470d8f1bd1db7335dfab0d3
-  size: 1125
-docker_layers/d93ed64ac935feda3370928a1808cde17eff0722f33d6a55fdc7c72ec8549efe.tgz:
-  object_id: 562999cf-8bcb-4065-938e-be970df4eb8b
-  sha: 5ab785b0f0c767becfdc1413e15f352116c5ba45
-  size: 892
-docker_layers/94c60cfbcfabddb4a8c7901dd3dc73923ab796f7c00d7cf920202e1c52bb073b.tgz:
-  object_id: 6e692445-3efa-4484-a64f-0bb1eb503131
-  sha: ebd598c8b92642a5b3257aecfb1f55550e5fabe6
-  size: 1127
-docker_layers/e7ab1eeb0d16b3a2f2ed3e7a469f7df8ba476ebd6300b792ba90dab049c63400.tgz:
-  object_id: 8e05808b-1dab-47ec-af90-4ba17a49bb1e
-  sha: 9eac591fbe566ee2f619e8651577c11b3deb0701
-  size: 869
-docker_layers/4146806789d537c8aec9fe7f3ca9219b23d3d615200053db00c32aa8b73de35a.tgz:
-  object_id: 96b43d51-905e-4037-9e3e-e52aa386b3d0
-  sha: ea4f81f3884e42f148221bea2d9c51e003d28ca5
-  size: 1092
 docker_layers/9b9f52cb6abeb7d446ba3dc3ea671b03d22678de363294cf846fb3526cdc1e57.tgz:
   object_id: 8ecb2db0-f6f7-46e6-91b3-90dd5c4fa838
   sha: 047e79339019a287cc21f40c53b8e38c8d6205eb
