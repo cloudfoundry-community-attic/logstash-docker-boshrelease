@@ -183,6 +183,7 @@ module DockerImagePackaging
   def create_package(name, files)
     package_dir = File.expand_path("../packages/#{name}", __FILE__)
     FileUtils.mkdir_p package_dir
+    files += "#{name}/*"
     spec = { "name" => name, "files" => files }
     IO.write(File.join(package_dir, 'spec'), spec.to_yaml)
     IO.write(File.join(package_dir, 'packaging'), packaging_script)
