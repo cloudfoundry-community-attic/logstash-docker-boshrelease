@@ -191,6 +191,7 @@ module DockerImagePackaging
   def packaging_script
     <<-END.gsub(/^ {6}/, '')
       set -e; set -u
+      cp cfcommunity_logstash_*_image/* $BOSH_INSTALL_TARGET
       cd docker_layers
       for layer in *.tgz; do tar -xf "$layer"; rm "$layer"; done
       tar -xf ../docker_images/*.tgz

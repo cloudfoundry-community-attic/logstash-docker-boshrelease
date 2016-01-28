@@ -25,6 +25,7 @@ bosh -n sync blobs
 
 for image in `ls tmpimages`
 do
+  rm -rf blobs/${image}
   mkdir -p blobs/${image}
   cp tmpimages/${image}/{image-id,repository,tag} blobs/${image}/.
 done
