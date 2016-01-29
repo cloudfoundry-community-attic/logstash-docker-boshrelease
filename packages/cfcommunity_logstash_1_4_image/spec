@@ -31,3 +31,4 @@ files:
 - docker_layers/94c60cfbcfabddb4a8c7901dd3dc73923ab796f7c00d7cf920202e1c52bb073b.tgz
 - docker_layers/e7ab1eeb0d16b3a2f2ed3e7a469f7df8ba476ebd6300b792ba90dab049c63400.tgz
 - docker_layers/4146806789d537c8aec9fe7f3ca9219b23d3d615200053db00c32aa8b73de35a.tgz
+- cfcommunity_logstash_1_4_image/*
