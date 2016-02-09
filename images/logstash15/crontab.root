@@ -1,1 +1,4 @@
-0 0 * * * /usr/local/bin/curator --host 127.0.0.1 delete indices --older-than 7 --time-unit days --timestring '%Y.%m.%d' 
+0 01 * * * /usr/local/bin/curator --host 127.0.0.1 delete indices --older-than 7 --time-unit days --timestring '%Y.%m.%d' 
+0 03 * * * /usr/local/bin/curator --host 127.0.0.1 delete --disk-space 10 indices --all-indices
+0 0 * * * /usr/local/bin/curator --host 127.0.0.1 optimize --max_num_segments 1 indices --prefix logstash --older-than 1 --time-unit days --timestring '%Y.%m.%d'
+
