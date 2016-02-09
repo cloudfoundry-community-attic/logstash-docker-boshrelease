@@ -1,1 +1,2 @@
 0 0 * * * /usr/local/bin/curator --host 127.0.0.1 delete indices --older-than 7 --time-unit days --timestring '%Y.%m.%d' 
+0 0 * * * /usr/local/bin/curator --host 127.0.0.1 delete --disk-space 10 indices --all-indices
